@@ -30,17 +30,38 @@ public class User {
     private String prenom;
       @NotNull
     private String telephone;
-      
-      private String zone;
-@NotNull
-private String email;
-@NotNull
-private String mdp;
-@NotNull
-private String grade;
+      @NotNull
+    private String zone;
+      @NotNull
+    private String email;
+      @NotNull
+    private String mdp;
+    @NotNull
+    private String grade;
+    @NotNull
+    private String ville;
+    @NotNull
+    private String pays;
+    @NotNull
+    private String adresse;
+    
+    public String getVille() {
+		return ville;
+	}
 
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
 
-    public Long getId() {
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -103,5 +124,34 @@ private String grade;
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public User(String nom, String prenom, String telephone, String zone, String email, String mdp, String grade,
+			String ville, String pays, String adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+		this.zone = zone;
+		this.email = email;
+		this.mdp = mdp;
+		this.grade = grade;
+		this.ville = ville;
+		this.pays = pays;
+		this.adresse = adresse;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
+	
 }

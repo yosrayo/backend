@@ -32,12 +32,12 @@ import org.hibernate.annotations.OnDeleteAction;
  * @author yosra
  */
 @Entity
+
 public class Produit {
      @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-     private int num_produit;
+    
      @NotNull
     private String nom_produit;
      @NotNull
@@ -66,13 +66,7 @@ public class Produit {
         this.id = id;
     }
 
-    public int getNum_produit() {
-        return num_produit;
-    }
 
-    public void setNum_produit(int num_produit) {
-        this.num_produit = num_produit;
-    }
 
     public String getNom_produit() {
         return nom_produit;

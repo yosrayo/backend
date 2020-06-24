@@ -9,6 +9,8 @@ import com.example.yosra.Exception.ResourceNotFoundException;
 import com.example.yosra.Model.Produit;
 import com.example.yosra.Model.User;
 import com.example.yosra.Repository.UserRepository;
+
+import java.awt.PageAttributes.MediaType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +48,13 @@ public class UserController {
     public User get(@PathVariable Long id) {
         return (User) userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
+
+@GetMapping("affichage")
+		public List<User>LoginUser() {
+
+	 return (List<User>) userRepository.findAll();
+	 
+	 }
     
     @PostMapping
     public User post(@RequestBody User user) {
@@ -83,5 +92,38 @@ public class UserController {
     public String handleError() {
         return "erreur de connexion";
     }
+    
+    
+    
+    
+    
+
+@GetMapping(value = "/Login/{email}/{pass}")
+		public User LoginUser( @PathVariable String email ,@PathVariable  String pass) {
+			User user = new User() ;
+		
+		 int size = userRepository.findUser(email, pass).size() ; 
+		 if (size == 0)
+		 {return user;}
+		 else 
+		 {
+			
+			 
+			 return userRepository.findUser(email, pass).get(0);}
+		 
+	 
+	 
+	 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

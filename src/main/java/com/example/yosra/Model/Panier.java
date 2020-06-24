@@ -20,6 +20,8 @@ public class Panier {
 	     @NotNull
 	     private Long id_user;
 	     @NotNull
+	     private long id_produit;
+	     @NotNull
 	     private int quantite;
 		public Long getId() {
 			return id;
@@ -61,6 +63,14 @@ public class Panier {
 
 		public void setQuantite(int quantite) {
 			this.quantite = quantite;
+		}
+
+		public long getId_produit() {
+			return id_produit;
+		}
+
+		public void setId_produit(long id_produit) {
+			this.id_produit = id_produit;
 		}
 	     
 	     

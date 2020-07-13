@@ -26,6 +26,8 @@ public class Commande {
 	 @NotNull
 	 private String date;
 	 @NotNull
+	 private String etat;
+	 @NotNull
 	 private long id_produit;
 	 @NotNull
 	 private long quantite;
@@ -57,6 +59,18 @@ public class Commande {
 		return quantite;
 	}
 	public void setQuantité(long quantite) {
+		this.quantite = quantite;
+	}
+	public String getEtat() {
+		return etat;
+	}
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+	public long getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(long quantite) {
 		this.quantite = quantite;
 	}
 	 

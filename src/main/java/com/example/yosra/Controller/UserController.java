@@ -55,11 +55,22 @@ public class UserController {
 	 return (List<User>) userRepository.findAll();
 	 
 	 }
+
+
+
+@GetMapping("grade/{grade}")
+public List<User> GradeUser(@PathVariable String grade) {
+
+return userRepository.findByGrade(grade);
+
+}
     
+
     @PostMapping
     public User post(@RequestBody User user) {
         return userRepository.save(user);
     }
+
     
     @PutMapping("/{id}")
     public User updateUser(@PathVariable(value = "id") Long userId,  @RequestBody User userDetails) {
@@ -98,24 +109,7 @@ public class UserController {
     
     
 
-@GetMapping(value = "/Login/{email}/{pass}")
-		public User LoginUser( @PathVariable String email ,@PathVariable  String pass) {
-			User user = new User() ;
-		
-		 int size = userRepository.findUser(email, pass).size() ; 
-		 if (size == 0)
-		 {return user;}
-		 else 
-		 {
-			
-			 
-			 return userRepository.findUser(email, pass).get(0);}
-		 
-	 
-	 
-	 }
-    
-    
+
     
     
     

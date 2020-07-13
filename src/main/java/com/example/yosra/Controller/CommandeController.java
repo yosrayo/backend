@@ -7,6 +7,7 @@ package com.example.yosra.Controller;
 
 import com.example.yosra.Exception.ResourceNotFoundException;
 import com.example.yosra.Model.Commande;
+import com.example.yosra.Model.User;
 import com.example.yosra.Repository.CommandeRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -47,6 +49,22 @@ public class CommandeController {
     @PostMapping
     public Commande post(@RequestBody Commande commande) {
         return commandeRepository.save(commande);
+    }
+    
+    @PutMapping("/{id}")
+    public Commande updateCommande(@PathVariable(value = "id") Long commandeId,  @RequestBody Commande commandeDetails) {
+
+        Commande commande = commandeRepository.findById(commandeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Commande", "id", commandeId));
+
+        commande.setEtat(commandeDetails.getEtat());
+        commande.setDate(commandeDetails.getDate());
+        commande.setId_user(commandeDetails.getId_user());
+        commande.setId_produit(commandeDetails.getId_produit());
+        commande.setQuantite(commandeDetails.getQuantite());
+       
+        Commande updatedCommande = commandeRepository.save(commande);
+        return updatedCommande;
     }
     
     @DeleteMapping("/{id}")

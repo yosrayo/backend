@@ -18,8 +18,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author TPC
  */
 public interface UserRepository extends CrudRepository<User, Long> {
-    
-	@Query("SELECT u FROM User u WHERE u.email = ?1 and u.mdp= ?2  ")
-	List<User> findUser(String email ,String pass ); 	
-	
-}
+ List<User> findByGrade(String grade);
+	}
